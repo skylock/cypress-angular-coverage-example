@@ -60,9 +60,10 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
-            "browserTarget": "cypress-angular-coverage-example:build"
+            "browserTarget": "cypress-angular-coverage-example:build",
+            "extraWebpackConfig": "./cypress/coverage.webpack.js"
           },
           "configurations": {
             "production": {
