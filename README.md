@@ -28,7 +28,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # Get code coverage on angular
 
-- Create a new angualr app using angular cli
+- Create a new angular app using angular cli
 ```
 ng new cypress-angular-coverage-example
 ```
@@ -42,9 +42,9 @@ ng g @briebug/cypress-schematic:cypress true
 ```
 - Install ngx-build-plus to extends the Angular CLI's build process and instrument the code
 ```
-npm i -D ngx-build-plus@7.5.7
+npm i -D ngx-build-plus
 ```
-- Add webpack coverage configfile coverage.webpack.js to cypress folder
+- Add webpack coverage config file coverage.webpack.js to cypress folder
 ```
 module.exports = {
   module: {
@@ -73,6 +73,10 @@ module.exports = {
             "browserTarget": "cypress-angular-coverage-example:build",
             "extraWebpackConfig": "./cypress/coverage.webpack.js"
           },
+```
+- Instrument JS files with istanbul-lib-instrument for subsequent code coverage reporting
+```
+npm i -D istanbul-instrumenter-loader
 ```
 - Make Istanbul understand your Typescript source files
 
