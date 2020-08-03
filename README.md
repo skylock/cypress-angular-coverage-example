@@ -102,8 +102,9 @@ import '@cypress/code-coverage/support'
 ```
 // cypress/plugins/index.js
 module.exports = (on, config) => {
-  on('task', require('@cypress/code-coverage/task'))
-}
+  require('@cypress/code-coverage/task')(on, config);
+  return config;
+};
 ```
 ##  Voilà !
 ##  You got angular coverage for your e2e tests written in cypress with typescript.
