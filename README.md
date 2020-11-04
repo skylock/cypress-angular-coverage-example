@@ -2,31 +2,22 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1.
 
-## Development server
+## Run development server & cypress
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run dev` for a dev server to start and lunch Cypress test runner.
 
-## Code scaffolding
+Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files. 
+ 
+## Running the app in development mode
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npm start` to start the app on `http://localhost:4200/`
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
+## Running cypress test runner only
 
 Run `npm run cy:open` to execute the end-to-end tests via [Cypress](https://www.cypress.io/).
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-# Get code coverage on angular
+# Get code coverage on an angular clean install
 
 - Create a new angular app using angular cli
 ```
@@ -77,22 +68,11 @@ module.exports = {
 - Instrument JS files with istanbul-lib-instrument for subsequent code coverage reporting
 ```
 npm i -D istanbul-instrumenter-loader
-```
-- Make Istanbul understand your Typescript source files
 
-```
-npm i -D @istanbuljs/nyc-config-typescript source-map-support ts-node
-```
-- Make sure that Istanbul takes advantage of it by adding this configuration in your package.json or in .nycrc.json
-```
-  "nyc": {
-    "extends": "@istanbuljs/nyc-config-typescript",
-    "all": true
-  },
 ```
 - Add cypress code coverage plugin
 ```
-  npm install -D @cypress/code-coverage nyc istanbul-lib-coverage
+  npm install -D @cypress/code-coverage
 ````
 - Then add the code below to your supportFile and pluginsFile
 ```
@@ -102,8 +82,9 @@ import '@cypress/code-coverage/support'
 ```
 // cypress/plugins/index.js
 module.exports = (on, config) => {
-  on('task', require('@cypress/code-coverage/task'))
-}
+  require('@cypress/code-coverage/task')(on, config);
+  return config;
+};
 ```
 ##  Voilà !
 ##  You got angular coverage for your e2e tests written in cypress with typescript.
