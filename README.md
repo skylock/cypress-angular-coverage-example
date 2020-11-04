@@ -25,11 +25,7 @@ ng new cypress-angular-coverage-example
 ```
 - Install cypress-schematic to switch from protractor to cypress e2e framework
 ```
-npm i -D  @briebug/cypress-schematic
-```
-- Switch to cypress from protractor
-```
-ng g @briebug/cypress-schematic:cypress true
+ng add @briebug/cypress-schematic
 ```
 - Install ngx-build-plus to extends the Angular CLI's build process and instrument the code
 ```
